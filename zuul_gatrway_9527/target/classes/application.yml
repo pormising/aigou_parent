@@ -1,0 +1,18 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: aigou-zuul-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: gateway-9527.com  #eureka 状态那一列显示的东西
+    prefer-ip-address: true
+zuul:
+  routes:
+     myUser.serviceId: aigou-plat  #我的服务名字
+     myUser.path: /plat/**  #以/user/开头的所有路径都转发给user-provider   配置了这个 还是可以通过user-provider  访问 所以配置下面
+  ignored-services:  "*" #   可以一个一个配置,但是很麻烦,用*来通配 *代替 上面的多个 提供服务的
+  prefix: "/services"  #加上统一前缀
