@@ -2,7 +2,7 @@ spring:
   application:
     name: aigou-eureka
 server:
-  port: 7001
+  port: 7001 #端口
 eureka:
   instance:
     hostname: eureka
